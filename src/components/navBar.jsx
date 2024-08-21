@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from "../assets/logo.svg"
 
 export default function NavBar() {
   const [state, setState] = useState(false);
@@ -13,16 +14,16 @@ export default function NavBar() {
   const marginTop = isHomePage ? 'mt-8': '0';
 
   return (
-    <nav className={`bg-inherit w-full border-b md:border-0 md:static mt-0 md:${marginTop}`}>
+    <nav className={`bg-inherit w-full roboto-light border-b md:border-0 md:static mt-0 md:${marginTop}`}>
 
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 w-full">
           {/* Logo for small screens */}
           <div className="flex items-center md:hidden">
-            <Link to="/logo" className="mr-auto">
+            <Link to="/" className="mr-auto">
               <img
                 alt="Logo"
-                src="https://images.pexels.com/photos/24807138/pexels-photo-24807138/free-photo-of-pool-in-luxury-summer-resort.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src={logo}
                 className="w-16 h-16 rounded-full"
               />
             </Link>
@@ -66,36 +67,63 @@ export default function NavBar() {
 
           {/* Logo for large screens */}
           <div className="hidden md:flex md:items-center md:justify-between w-full">
+            
             <ul className={`flex items-center space-x-16 ${textColor}`}>
-              <li className={`text-xl hover:text-indigo-600`}>
-                <Link to="/">Home</Link>
+              <li className={`text-lg group inline-block relative`}>
+                <Link to="/" className= {`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ` }>
+                  Home
+                </Link>
+
               </li>
-              <li className={`text-xl hover:text-indigo-600`}>
-                <Link to="/about">About</Link>
+              <li className={`text-lg group inline-block relative`}>
+                <Link to="/about" className={`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ${location.pathname=== '/about' ? 'underline underline-offset-4 decoration-2 hover:decoration-4' :"" } `}>
+                  About
+                </Link>
               </li>
-              <li className={`text-xl hover:text-indigo-600`}>
-                <Link to="/room">Room</Link>
+              <li className={`text-lg group inline-block relative`}>
+                <Link to="/room" className={`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ${location.pathname=== '/room' ? 'underline underline-offset-4 decoration-2 hover:decoration-4' :"" } `}>
+                  Room
+                </Link>
+              </li>
+
+              <li className={`text-lg group inline-block relative`}>
+                <Link to="/facility" className={`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ${location.pathname=== '/facility' ? 'underline underline-offset-4 decoration-2 hover:decoration-4' :"" } `}>
+                  Facilities
+                </Link>
               </li>
             </ul>
-            <Link to="/logo">
+            
+            
+            <Link to="/">
               <img
                 alt="Logo"
-                src="https://images.pexels.com/photos/24807138/pexels-photo-24807138/free-photo-of-pool-in-luxury-summer-resort.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src={logo}
                 className="w-22 h-16 rounded-full"
               />
             </Link>
             <ul className={`flex items-center space-x-16 ${textColor}`}>
-              <li className={`text-xl hover:text-indigo-600`}>
-                <Link to="/dining">Dining</Link>
+
+            <li className={`text-lg group inline-block relative`}>
+                <Link to="/menu" className={`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ${location.pathname=== '/menu' ? 'underline underline-offset-4 decoration-2 hover:decoration-4' :"" } `}>
+                  Menu
+                </Link>
               </li>
-              <li className={`text-xl hover:text-indigo-600`}>
-                <Link to="/wellness">Wellness</Link>
+
+              <li className={`text-lg group inline-block relative`}>
+                <Link to="/wellness" className={`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ${location.pathname=== '/wellness' ? 'underline underline-offset-4 decoration-2 hover:decoration-4' :"" } `}>
+                  Wellness
+                </Link>
               </li>
-              <li className={`text-xl hover:text-indigo-600`}>
-                <Link to="/gallery">Gallery</Link>
+              
+              <li className={`text-lg group inline-block relative`}>
+                <Link to="/gallery" className={`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ${location.pathname=== '/gallery' ? 'underline underline-offset-4 decoration-2 hover:decoration-4' :"" } `}>
+                  Gallery
+                </Link>
               </li>
-              <li className={`text-xl hover:text-indigo-600`}>
-                <Link to="/contact">Contact</Link>
+              <li className={`text-lg group inline-block relative`}>
+                <Link to="/contact" className={`inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out ${location.pathname=== '/contact' ? 'underline underline-offset-4 decoration-2 hover:decoration-4' :"" } `}>
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
@@ -126,31 +154,52 @@ export default function NavBar() {
               />
             </svg>
           </button>
-          <ul className="mt-16 space-y-8 p-4">
-            <li className="text-black text-xl hover:text-indigo-600">
-              <Link to="/">Home</Link>
+          <ul className="mt-16 flex flex-col  roboto-bold space-y-8 p-4">
+            <li className="text-black  group inline-block relative">
+              <Link to="/" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                Home
+              </Link>
             </li>
-            <li className="text-black text-xl hover:text-indigo-600">
-              <Link to="/about">About</Link>
+            <li className="text-black  group inline-block relative">
+              <Link to="/about" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                About
+              </Link>
             </li>
-            <li className="text-black text-xl hover:text-indigo-600">
-              <Link to="/room">Room</Link>
+            <li className="text-black  group inline-block relative">
+              <Link to="/room" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                Room
+              </Link>
             </li>
-            <li className="text-black text-xl hover:text-indigo-600">
-              <Link to="/dining">Dining</Link>
+            <li className="text-black  group inline-block relative">
+              <Link to="/facility" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                Facilities
+              </Link>
             </li>
-            <li className="text-black text-xl hover:text-indigo-600">
-              <Link to="/wellness">Wellness</Link>
+            <li className="text-black  group inline-block relative">
+              <Link to="/dining" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                Dining
+              </Link>
             </li>
-            <li className="text-black text-xl hover:text-indigo-600">
-              <Link to="/gallery">Gallery</Link>
+            <li className="text-black  group inline-block relative">
+              <Link to="/wellness" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                Wellness
+              </Link>
             </li>
-            <li className="text-black text-xl hover:text-indigo-600">
-              <Link to="/contact">Contact</Link>
+            <li className="text-black  group inline-block relative">
+              <Link to="/gallery" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                Gallery
+              </Link>
+            </li>
+            <li className="text-black  group inline-block relative">
+              <Link to="/contact" className="inline-block relative group-hover:after:w-full after:block after:absolute after:h-0.5 after:bg-white after:left-0 after:bottom-0 after:transition-all after:duration-500 after:ease-in-out">
+                Contact
+              </Link>
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+
+        </div>
+</nav>
+    
   );
 }

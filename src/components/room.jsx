@@ -1,65 +1,83 @@
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Button,
-    IconButton,
-  } from "@material-tailwind/react";
-  import NavBar from "./navBar";
-  import Footer from "./footer";
-  
-  export default function Room() {
-    return (
-      <>
-        <NavBar />
-        <div className="flex flex-wrap justify-center gap-3 ">
-          {Array.from({ length: 6 }).map((_, index) => (
-            <Card key={index} className="w-full max-w-sm shadow-lg">
+import NavBar from "./navBar";
+import Footer from "./footer";
+import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
+import { motion, AnimatePresence } from "framer-motion"
+import img1 from "../assets/singlebedroom.jpg"
+import img2 from "../assets/doublebedroom.jpg"
+import img3 from "../assets/kingbedroom.jpg"
+import img4 from "../assets/queenbedroom.jpg"
+import { Link } from "react-router-dom";
+const roomData = [
+  {
+    image: img1,
+    title: "Single Bed Room",
+    description: "Enter a freshly updated and thoughtfully furnished peaceful home surrounded by ancient trees, stone walls, and open meadows."
+  },
+  {
+    image: img2,
+    title: "Double Bed Room",
+    description: "Relax in our spacious double bed room, featuring modern amenities and stunning views of the countryside ancient trees, stone walls,."
+  },
+  {
+    image:img3,
+    title: "Family Suite",
+    description: "Our family suite offers ample space and comfort for you and your loved ones, with a separate living area and kitchenette."
+  },
+  {
+    image: img4,
+    title: "Penthouse Suite",
+    description: "Experience the height of luxury in our stunning penthouse suite, featuring a private terrace, modern amenities, and breathtaking views of the city skyline."
+  }
+];
+
+export default function Room() {
+  return (
+    <>
+      <NavBar />
+      <h1 className="text-3xl text-center roboto-bold "> Hotel Rooms</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center ">
+        {roomData.map((room, index) => (
+          <AnimatePresence key={index}>
+            <motion.Card
+              className="w-full max-w-sm shadow-2xl"
+              whileHover={{
+                scale: 1.0175,
+              }}
+              initial={{ y: 0 }}
+              animate={{ y: 20 }}
+              transition={{ delay: index * 0.25, type: "spring", stiffness: 100 }}
+              exit={{ y: 0 }}
+            >
               <CardHeader floated={false} color="blue-gray">
-                <img
-                  src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                  alt="room image"
-                />
-                <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
-                <IconButton
-                  size="sm"
-                  color="red"
-                  variant="text"
-                  className="!absolute top-4 right-4 rounded-full"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-6 w-6"
-                  >
-                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-                  </svg>
-                </IconButton>
+                <img src={room.image} alt={room.title} />
+                <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </CardHeader>
               <CardBody>
                 <div className="mb-3 flex items-center justify-between">
-                  <Typography variant="h5" color="blue-gray" className="font-medium">
-                    Single Bed Room
+                  <Typography
+                    variant="h5"
+                    color="blue-gray"
+                    className="font-medium roboto-bold mx-auto hover:underline transition-all duration-300 ease-in-out"
+                  >
+                    <Link to={"/specificroom"}>
+                    {room.title}
+                    </Link>
                   </Typography>
                 </div>
-                <Typography color="gray">
-                  Enter a freshly updated and thoughtfully furnished peaceful home
-                  surrounded by ancient trees, stone walls, and open meadows.
+                <Typography className="roboto-medium" color="gray">
+                  {room.description}
                 </Typography>
               </CardBody>
-              <CardFooter className="pt-1">
+              <CardFooter className="pt-1 roboto-bold">
                 <Button size="lg" fullWidth={true}>
                   View Room Details
                 </Button>
               </CardFooter>
-            </Card>
-          ))}
-        </div>
-        <Footer />
-      </>
-    );
-  }
-  
+            </motion.Card>
+          </AnimatePresence>
+        ))}
+      </div>
+      <Footer />
+    </>
+  );
+}

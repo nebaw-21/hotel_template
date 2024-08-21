@@ -12,25 +12,21 @@ export default function ContactUs() {
         <Typography
           variant="h5"
           color="blue-gray"
-          className="mb-4 !text-base lg:!text-2xl"
+          className="mb-6 !text-base lg:!text-3xl roboto-bold"
         >
           Customer Care
         </Typography>
-        <Typography
-          variant="h1"
-          color="blue-gray"
-          className="mb-4 !text-3xl lg:!text-5xl"
-        >
-          We&apos;re Here to Help
-        </Typography>
-        <Typography className="mb-10 font-normal !text-lg lg:mb-20 mx-auto max-w-3xl !text-gray-500">
-          Whether it&apos;s a question about our services, a request for
-          technical assistance, or suggestions for improvement, our team is
-          eager to hear from you.
-        </Typography>
-        <div className="grid grid-cols-1 gap-x-12 gap-y-6 lg:grid-cols-2 items-start">
-        <iframe width="620" height="400" src="https://maps.google.com/maps?width=620&amp;height=400&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=k&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps systems</a></iframe>
 
+
+        <div className="grid grid-cols-1 gap-x-12 gap-y-6 lg:grid-cols-2 items-start">
+       
+        <div className="relative pb-[56.25%] md:pb-[45%] lg:pb-[40%] overflow-hidden lg:h-[420px]">
+  <iframe
+    className="absolute top-0 left-0 w-full h-full sm:h-[400px] md:h-[600px] lg:h-[800px]"
+    src="https://maps.google.com/maps?width=620&amp;height=400&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=k&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+    <a href="https://www.gps.ie/">gps systems</a>
+  </iframe>
+</div>
           <form
             action="#"
             className="flex flex-col gap-4 lg:max-w-sm"
